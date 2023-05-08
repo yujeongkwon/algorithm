@@ -31,3 +31,4 @@ while i<maxLen:
         break
 
 print(' '.join(answer))
+
