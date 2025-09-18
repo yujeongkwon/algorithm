@@ -23,10 +23,7 @@ public class Main {
         while(lf<rt) {
             if(numbers[lf] + numbers[rt] == x) {
                 answer++;
-                numbers[lf] = -1;
-                numbers[rt] = -1;
                 lf++;
-                rt--;
             }
             else if(numbers[lf] + numbers[rt] > x) {
                 rt--;
