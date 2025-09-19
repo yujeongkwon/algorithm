@@ -1,35 +1,32 @@
-import java.util.Scanner;
-import java.util.Stack;
+import java.io.*;
+import java.util.*;
+import java.util.stream.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] inputWaterHeat = new int[n];
-        for (int i = 0; i < n; i++) {
-            inputWaterHeat[i] = sc.nextInt();
-        }
-
-        Stack<Integer> stack = new Stack<>();
-        StringBuffer bf = new StringBuffer();
-        int inputPeak = 0;
-        int i = 1;
-
-        while (i <= n || !stack.isEmpty()) {
-            if (!stack.isEmpty() && stack.peek() == inputWaterHeat[inputPeak]) {
-                stack.pop();
-                inputPeak++;
-                bf.append("-\n");
-            } else if (i <= n) {
-                stack.push(i);
-                i++;
-                bf.append("+\n");
-            } else {
-                System.out.print("NO");
-                return;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        LinkedList<Integer> stack = new LinkedList<>();
+        
+        int cnt = 1;
+        
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<n; i++){
+            int input = Integer.parseInt(br.readLine());
+            while(cnt <= input) {
+                stack.push(cnt++);
+                sb.append("+\n");
             }
+            
+            if(stack.isEmpty() || stack.peek() != input){
+                System.out.print("NO");
+                return ;
+            }
+            
+            stack.pop();
+            sb.append("-\n");
         }
-
-        System.out.print(bf.toString());
+        
+        System.out.print(sb.toString());
     }
 }
