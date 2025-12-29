@@ -6,18 +6,18 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
-        long answer = 0;
-        LinkedList<Long> stack = new LinkedList<>();
-
-        for (int i=0; i<N; i++){
-            long cur= Long.parseLong(br.readLine());
-            while(!stack.isEmpty() && stack.peek() <= cur) {
-                stack.pop();
+        long result = 0;
+        
+        LinkedList<Integer> stack = new LinkedList<>();
+        for(int i=0; i<N; i++) {
+            int cur = Integer.parseInt(br.readLine());
+            while(!stack.isEmpty() && stack.peekLast() <= cur) {
+                stack.pollLast();
             }
-            answer+= stack.size();
-            stack.push(cur);
+            result += stack.size();
+            stack.addLast(cur);
         }
         
-       System.out.print(answer);
+        System.out.print(result);
     }
 }
