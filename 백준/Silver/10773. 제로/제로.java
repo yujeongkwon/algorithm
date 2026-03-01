@@ -6,18 +6,16 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int K = Integer.parseInt(br.readLine());
-        LinkedList<Integer> stack = new LinkedList<>();
         
-        for(int i=0; i<K; i++){
+        LinkedList<Integer> num = new LinkedList<>();
+        for(int i=0; i<K; i++) {
             int n = Integer.parseInt(br.readLine());
-            if(n==0) {
-                stack.pop();
-            }
-            else {
-                stack.push(n);
-            }
+            
+            if(n==0)    num.pop();
+            else    num.push(n);
+            
         }
         
-        System.out.print(stack.stream().mapToInt(Integer::intValue).sum());
+        System.out.println(num.stream().mapToInt(Integer::intValue).sum());
     }
 }
